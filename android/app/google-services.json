@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "108135154371",
+    "project_id": "rn-ultimate-devotional",
+    "storage_bucket": "rn-ultimate-devotional.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108135154371:android:3904583fd75fda66ab5876",
+        "android_client_info": {
+          "package_name": "com.rsb.ultimatedevotional"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108135154371-e6gfcbfnd1gmcndd2vpdp0c26o29rfb2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsb.ultimatedevotional",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "108135154371-18q73sbmk0au9dmruh6qrer6j2h5cnrc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5U7l6bH2iWPKzNzYIbebLEKW4T3wr0b0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108135154371-18q73sbmk0au9dmruh6qrer6j2h5cnrc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "108135154371-oa7debsgpbs5pg127njf3lv877mips5e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rsb.ultimatedevotional"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
