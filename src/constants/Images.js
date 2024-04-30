@@ -14,7 +14,7 @@ export default {
 
   // Books Covers
   Bridegroom:
-    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FBridegroom.jpg?alt=media&token=2e287b9b-b8ca-4f7a-8936-412c605fb7c5',
+    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FBridegroom.jpeg?alt=media&token=da651def-87d1-4f14-8ecf-be6d001e93f7',
   GodHeart:
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FGodHeart.jpg?alt=media&token=60fbeead-341c-402e-8570-6702aaab8be3',
   ItFinished:
@@ -24,15 +24,15 @@ export default {
   PrepareLastDays:
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FPrepareLastDays.jpg?alt=media&token=7d7c71df-da03-4ef9-a100-e43dbbd83f7e',
   JourneyPromised:
-    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FJourneyPromised.jpg?alt=media&token=90d4e871-2c95-4172-a793-04d651db35ee',
+    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FJourneyPromised.jpeg?alt=media&token=d513f4df-eabb-4e52-bcb6-7d74311a7ee8',
 
   // EG White
   Education:
-    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Fed.jpg?alt=media&token=5f5e7698-72c2-406e-8453-3fc939f8c7a0',
+    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Fed.jpeg?alt=media&token=778d40f5-9242-40f7-b47b-7e5bdd822cda',
   ActsApostles:
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Faa.jpg?alt=media&token=6060f3a5-6f28-41cb-b47e-9d22ea67c1da',
   ChristLesson:
-    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Fcol.jpg?alt=media&token=7cbc3238-39cc-4d88-81bf-f07123b8ce80',
+    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Fcol.jpeg?alt=media&token=9f389a49-5a8d-432f-99af-c05b23a06427',
   DesireAges:
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Fda.jpg?alt=media&token=a7fa3e6d-52f4-4b45-9c8a-fa3adedf7069',
   GreatControversy:
@@ -46,5 +46,5 @@ export default {
   StepsChrist:
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Fsc.jpg?alt=media&token=cfd1ba29-5d83-426f-8814-de15880f13bb',
   ThoughtsMountBlessing:
-    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Fmb.jpg?alt=media&token=ae1d43b0-c68a-400f-b545-1ccf82f0e9a0',
+    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FEG_White_Commentary%2Fmb.jpeg?alt=media&token=fdfa67e3-79f0-4e2a-94ba-595cdd237ba9',
 };
