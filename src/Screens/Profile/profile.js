@@ -26,6 +26,16 @@ const menuItems = [
     navigateTo: StackScreens.BookmarkScreen,
   },
   {
+    iconName: 'highlight',
+    itemTitle: 'Highlights',
+    navigateTo: StackScreens.BookmarkScreen,
+  },
+  {
+    iconName: 'note',
+    itemTitle: 'Notes',
+    navigateTo: StackScreens.BookmarkScreen,
+  },
+  {
     iconName: 'payment',
     itemTitle: 'Subscription',
     navigateTo: StackScreens.PaywallScreen,

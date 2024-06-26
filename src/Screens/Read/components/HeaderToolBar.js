@@ -40,12 +40,19 @@ export const HeaderToolBar = ({
   };
 
   // Note: Calendar OK presshandler
+
   const calendarConfirmHandler = () => {
-    setToolbarDate(moment(selectedDay).format(CalendarUtil.month));
+    setToolbarDate(moment.utc(selectedDay).format(CalendarUtil.month));
     goIndex();
-    chapterIndex.current = moment(selectedDay).format('MM-DD');
+    chapterIndex.current = moment.utc(selectedDay).format('MM-DD');
     calendarPressHandler(false);
   };
+  // const calendarConfirmHandler = () => {
+  //   setToolbarDate(moment(selectedDay).format(CalendarUtil.month));
+  //   goIndex();
+  //   chapterIndex.current = moment(selectedDay).format('MM-DD');
+  //   calendarPressHandler(false);
+  // };
   return (
     <>
       <ToolBar

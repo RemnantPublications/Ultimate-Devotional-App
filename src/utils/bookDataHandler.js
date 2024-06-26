@@ -39,6 +39,12 @@ export const bookDataHandler = title => {
         book: BookTitles.JourneyPromised,
         cover: Images.JourneyPromised,
       };
+    case BookTitles.WeWantKing:
+      return {
+        data: BooksData.WeWantKing,
+        book: BookTitles.WeWantKing,
+        cover: Images.WeWantKing,
+      };
     // Note: EGWHite Books
     case BookTitles.Education:
       return {

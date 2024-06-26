@@ -25,6 +25,8 @@ export default {
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FPrepareLastDays.jpg?alt=media&token=7d7c71df-da03-4ef9-a100-e43dbbd83f7e',
   JourneyPromised:
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FJourneyPromised.jpeg?alt=media&token=d513f4df-eabb-4e52-bcb6-7d74311a7ee8',
+  WeWantKing:
+    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FWeWantKing.jpg?alt=media&token=c25bff13-9f15-4ef8-bfd4-879f7385bec7',
 
   // EG White
   Education:

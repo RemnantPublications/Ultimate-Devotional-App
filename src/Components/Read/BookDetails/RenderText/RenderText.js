@@ -9,7 +9,7 @@ export const RenderText = ({content, onPress, ...props}) => {
       underlayColor={Colors.gray200}
       activeOpacity={1}
       onPress={() => onPress(content)}>
-      <Text {...props} suppressHighlighting={true}>
+      <Text {...props} selectable={true} suppressHighlighting={true}>
         {content}
       </Text>
     </TouchableHighlight>

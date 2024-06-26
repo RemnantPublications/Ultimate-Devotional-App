@@ -153,11 +153,15 @@ export const LibraryScreen = ({navigation}) => {
         showsVerticalScrollIndicator={false}>
         {/* Note: Latest year books */}
         {currentYearBooks && (
-          <BookList
-            data={currentYearBooks}
-            navigation={navigation}
-            darkMode={darkMode.text}
-          />
+          <View
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <BookList
+              data={currentYearBooks}
+              navigation={navigation}
+              darkMode={darkMode.text}
+            />
+          </View>
         )}
 
         <TitleBanner title={Title.PreviousYear} />

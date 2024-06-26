@@ -3,6 +3,16 @@ import {BookTitles} from './Books';
 
 export const LibraryBooksData = [
   {
+    title: 'We Want A King',
+    image: Images.WeWantKing,
+    date: '2024',
+  },
+  {
+    title: 'Journey To The Promised Land',
+    image: Images.JourneyPromised,
+    date: '2023',
+  },
+  {
     title: 'The Bridegroom Is Coming',
     image: Images.Bridegroom,
     date: '2021',
@@ -10,11 +20,6 @@ export const LibraryBooksData = [
   {
     title: 'It Is Finished',
     image: Images.ItFinished,
-    date: '2021',
-  },
-  {
-    title: 'Journey To The Promised Land',
-    image: Images.JourneyPromised,
     date: '2021',
   },
   {

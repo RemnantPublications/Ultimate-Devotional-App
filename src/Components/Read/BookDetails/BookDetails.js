@@ -74,7 +74,9 @@ export const BookDetails = ({
         scrollEventThrottle={16}
         bounces={false}>
         <View style={styles.bookDetailContent}>
-          <Text style={[styles.bookTitleText, formatTextSize.bookTitleText]}>
+          <Text
+            selectable={true}
+            style={[styles.bookTitleText, formatTextSize.bookTitleText]}>
             {item.title}
           </Text>
 
@@ -84,7 +86,9 @@ export const BookDetails = ({
             style={[styles.bookBibleText, formatTextSize.bookBibleText]}
           />
 
-          <Text style={[styles.bookBibleText, formatTextSize.bookBibleText]}>
+          <Text
+            selectable={true}
+            style={[styles.bookBibleText, formatTextSize.bookBibleText]}>
             {item.bibleReference}
           </Text>
 
@@ -102,6 +106,7 @@ export const BookDetails = ({
           ))}
 
           <Text
+            selectable={true}
             style={[
               styles.referenceText,
               formatTextSize.referenceText,
@@ -115,11 +120,14 @@ export const BookDetails = ({
             style={[styles.dividerImg, darkMode.image]}
           />
 
-          <Text style={[styles.reflectionText, formatTextSize.referenceText]}>
+          <Text
+            selectable={true}
+            style={[styles.reflectionText, formatTextSize.referenceText]}>
             Reflection:{' '}
           </Text>
 
           <RenderText
+            selectable={true}
             content={item.reflectionText}
             onPress={textOnpressHandler}
             style={[
@@ -130,6 +138,7 @@ export const BookDetails = ({
           />
 
           <Text
+            selectable={true}
             style={[
               styles.referenceText,
               formatTextSize.referenceText,

@@ -102,6 +102,9 @@ const getBookRef = (bookTitle, date) => {
   } else if (bookTitle === BookTitles.JourneyPromised) {
     // bookDirectory = fetchAudioBooks.JourneyPromised;
     audioDirectory = AudioDir.JourneyPromised;
+  } else if (bookTitle === BookTitles.WeWantKing) {
+    // bookDirectory = fetchAudioBooks.WeWantKing;
+    audioDirectory = AudioDir.WeWantKing;
   }
   const todayDate = date;
 

@@ -4,6 +4,7 @@ import Bridegroom from '../constants/BookJson/bridegroom-is-coming.json';
 import NobleCharacter from '../constants/BookJson/the-noble-character.json';
 import PrepareLastDays from '../constants/BookJson/prepare-for-the-last-days.json';
 import JourneyPromised from '../constants/BookJson/journey_to_the_promised_land.json';
+import WeWantKing from '../constants/BookJson/we-want-a-king.json';
 
 // E.G. White Commentary
 import Education from '../constants/BookJson/EGWhite/ed.json';
@@ -24,6 +25,7 @@ export const BooksData = {
   NobleCharacter: NobleCharacter,
   PrepareLastDays: PrepareLastDays,
   JourneyPromised: JourneyPromised,
+  WeWantKing: WeWantKing,
 
   Education: Education,
   ActsApostles: ActsApostles,
@@ -44,6 +46,7 @@ export const BookTitles = {
   NobleCharacter: 'The Noble Character',
   PrepareLastDays: 'Prepare For The Last Days',
   JourneyPromised: 'Journey To The Promised Land',
+  WeWantKing: 'We Want A King',
 
   Education: 'Education',
   ActsApostles: 'Acts of the Apostles',
@@ -61,10 +64,12 @@ export const AudioDir = {
   Bridegroom: 'bic',
   ItFinished: 'iif',
   JourneyPromised: 'jpl',
+  WeWantKing: 'wwak',
 };
 
 export const fetchAudioBooks = {
   BrideGroom: 'Bridegroom_Is_Coming',
   ItFinished: 'It_Is_Finished',
   JourneyPromised: 'Journey_to_the_Promised_Land',
+  WeWantKing: 'We_Want_a_King',
 };
