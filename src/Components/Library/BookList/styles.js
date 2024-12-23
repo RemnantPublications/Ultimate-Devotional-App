@@ -12,8 +12,8 @@ export const styles = {
   },
   bookImg: {
     resizeMode: 'cover',
-    height: hp('35%'),
-    width: wp('50%'),
+    aspectRatio: 0.66,
+    width: wp('55%'), ////increased bym 5%
     borderRadius: 10,
   },
   bookTitle: {

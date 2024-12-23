@@ -52,4 +52,9 @@ export const styles = StyleSheet.create({
     lineHeight: 22,
     marginTop: 10,
   },
+  titleText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
 });

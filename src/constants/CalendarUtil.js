@@ -3,14 +3,14 @@ import moment from 'moment';
 export const CalendarUtil = {
   date: moment().utc().format('YYYY-MM-DD'),
   currentYear: moment().utc().format('YYYY'),
-  prayerDate: moment().utc().format('MM/DD/YYYY'),
+  prayerDate: moment().utc().format('MM-DD-YYYY'),
   timestamp: moment().utc().valueOf(),
   dataYear: moment.utc('2024').format('YYYY-MM-DD'),
 
   month: 'MMMM DD',
   monthFormat: 'MM',
   format: 'YYYY-MM-DD',
-  prayerDateFormat: 'MM/DD/YYYY',
+  prayerDateFormat: 'MM-DD-YYYY',
   calendarModalFormat: 'DD MMM YYYY',
   audioDateFormat: 'MM-DD',
 

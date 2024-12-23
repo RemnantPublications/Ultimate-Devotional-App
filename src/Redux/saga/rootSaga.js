@@ -13,6 +13,11 @@ import {
   checkBookmarkFlow,
 } from './bookmarkSaga';
 import {
+  addHighlightFlow,
+  removeHighlightFlow,
+  removeAllHighlightFlow,
+} from './highlightSaga';
+import {
   updateSubscriptionFlow,
   updateActiveCouponFlow,
   updateCouponExpireFlow,
@@ -29,6 +34,9 @@ export default function* rootSaga() {
     fork(removeBookmarkFlow),
     fork(selectedBookmarkFlow),
     fork(removeAllBookmarkFlow),
+    fork(addHighlightFlow),
+    fork(removeHighlightFlow),
+    fork(removeAllHighlightFlow),
     fork(updateSubscriptionFlow),
     fork(updateActiveCouponFlow),
     fork(updateCouponExpireFlow),

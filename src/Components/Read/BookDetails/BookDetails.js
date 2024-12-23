@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {View, Text, Image, ScrollView, Dimensions} from 'react-native';
 
@@ -7,7 +8,7 @@ import {styles} from '@screens/Read/styles';
 import {TextSize} from '@constants/TextSize';
 import {useTheme} from '@theme/ThemeProvider';
 import {selectBookmark} from '@actions/action';
-import {checkBookmarked} from '@actions/action';
+import {addBookmark} from '../../../Redux/actions/action';
 import {onScrollHandler} from '@utils/tabbarUtils';
 import {RenderText} from './RenderText/RenderText';
 
@@ -58,13 +59,21 @@ export const BookDetails = ({
     const bookmarkText = text;
     dispatch(selectBookmark(bookmarkText, item.title, bookTitle, bookCover));
     showbookmark(true);
-    dispatch(checkBookmarked());
   };
 
   const scrollHandler = event => {
     onScrollHandler(navigation, event);
     showbookmark(false);
   };
+
+  // Ensure `showbookmark` is set to false when navigating away
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        showbookmark(false); // Reset state when screen loses focus
+      };
+    }, [showbookmark]),
+  );
 
   return (
     <View style={[styles.content, darkMode.background, {width}]}>
@@ -74,27 +83,35 @@ export const BookDetails = ({
         scrollEventThrottle={16}
         bounces={false}>
         <View style={styles.bookDetailContent}>
-          <Text
-            selectable={true}
-            style={[styles.bookTitleText, formatTextSize.bookTitleText]}>
+          <Text style={[styles.bookTitleText, formatTextSize.bookTitleText]}>
             {item.title}
           </Text>
 
+          {/* Pass the devotionalId to all RenderText components */}
           <RenderText
             content={item.bibleText}
+            devotionalId={item.title}
+            devotionalTitle={item.title}
+            devotionalDay={item.dayNumber}
+            devotionalCover={bookCover} // Pass devotionalId here
+            sectionTitle="bibleText"
             onPress={textOnpressHandler}
             style={[styles.bookBibleText, formatTextSize.bookBibleText]}
           />
 
-          <Text
-            selectable={true}
-            style={[styles.bookBibleText, formatTextSize.bookBibleText]}>
+          <Text style={[styles.bookBibleText, formatTextSize.bookBibleText]}>
             {item.bibleReference}
           </Text>
 
           {item.mainText.map((itemText, index) => (
             <RenderText
               content={itemText}
+              devotionalId={item.title}
+              devotionalTitle={item.title}
+              devotionalDay={item.dayNumber} // Pass devotionalId here
+              devotionalCover={bookCover}
+              sectionTitle="mainText"
+              paragraphIndex={index}
               onPress={textOnpressHandler}
               key={index}
               style={[
@@ -106,7 +123,6 @@ export const BookDetails = ({
           ))}
 
           <Text
-            selectable={true}
             style={[
               styles.referenceText,
               formatTextSize.referenceText,
@@ -120,15 +136,17 @@ export const BookDetails = ({
             style={[styles.dividerImg, darkMode.image]}
           />
 
-          <Text
-            selectable={true}
-            style={[styles.reflectionText, formatTextSize.referenceText]}>
+          <Text style={[styles.reflectionText, formatTextSize.referenceText]}>
             Reflection:{' '}
           </Text>
 
           <RenderText
-            selectable={true}
             content={item.reflectionText}
+            devotionalId={item.title}
+            devotionalTitle={item.title}
+            devotionalDay={item.dayNumber} // Pass devotionalId here
+            devotionalCover={bookCover}
+            sectionTitle="reflectionText"
             onPress={textOnpressHandler}
             style={[
               styles.bibleReflection,
@@ -138,7 +156,6 @@ export const BookDetails = ({
           />
 
           <Text
-            selectable={true}
             style={[
               styles.referenceText,
               formatTextSize.referenceText,

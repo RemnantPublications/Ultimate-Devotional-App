@@ -19,8 +19,8 @@
 		D1596E0B273A42B300BB16C5 /* GothamMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25CCF21C1BB24D5D810061EF /* GothamMedium.ttf */; };
 		D17C6632273A499000A5D4EB /* GothamMedium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8780768618484DF8A370DDAF /* GothamMedium-Italic.ttf */; };
 		D17C6633273A499600A5D4EB /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7F15740617F4AF4964A992D /* GothamBold.ttf */; };
-		D1CBF5A12741091E009A2DDC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CBF5A02741091E009A2DDC /* StoreKit.framework */; };
 		D3C10B364F4345DC9B6649F2 /* GothamMedium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8780768618484DF8A370DDAF /* GothamMedium-Italic.ttf */; };
+		DE3482242D137BD800773435 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE3482232D137BD800773435 /* StoreKit.framework */; };
 		F7721E71270ED66C003FA896 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7721E70270ED66C003FA896 /* dummy.swift */; };
 		F7EE9563270AD68800B25A98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7EE9562270AD68800B25A98 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -86,7 +86,7 @@
 		C889108E0F26452F94E4E318 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		D15727142740B4B10023C07F /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		D157271E2740B5410023C07F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		D1CBF5A02741091E009A2DDC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DE3482232D137BD800773435 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E22ABC84F26E4B5F9B8CCF53 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F7574521270EDB28003C5F45 /* UltimateDevotional.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = UltimateDevotional.entitlements; path = UltimateDevotional/UltimateDevotional.entitlements; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4D10CA90148D6F4F68B1C43 /* libPods-UltimateDevotional.a in Frameworks */,
-				D1CBF5A12741091E009A2DDC /* StoreKit.framework in Frameworks */,
+				DE3482242D137BD800773435 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +155,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D1CBF5A02741091E009A2DDC /* StoreKit.framework */,
+				DE3482232D137BD800773435 /* StoreKit.framework */,
 				D157271E2740B5410023C07F /* libz.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				07273F4FB79BD98C034D39C9 /* libPods-UltimateDevotional.a */,
@@ -640,12 +640,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UltimateDevotional/UltimateDevotional.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H3B2T87NY7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = UltimateDevotional/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,7 +720,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-slider\"",
 					/usr/lib/swift,
 				);
-				MARKETING_VERSION = 1.1.5;
+				MARKETING_VERSION = 1.1.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -726,9 +728,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rsb.ultimatedevotional;
 				PRODUCT_NAME = UltimateDevotional;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "UltimateDevotional-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -739,11 +744,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UltimateDevotional/UltimateDevotional.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H3B2T87NY7;
 				INFOPLIST_FILE = UltimateDevotional/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -808,7 +815,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-slider\"",
 					/usr/lib/swift,
 				);
-				MARKETING_VERSION = 1.1.5;
+				MARKETING_VERSION = 1.1.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -816,8 +823,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rsb.ultimatedevotional;
 				PRODUCT_NAME = UltimateDevotional;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "UltimateDevotional-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

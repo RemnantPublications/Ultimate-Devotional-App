@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -18,10 +20,19 @@ import {useTheme} from '@theme/ThemeProvider';
 import {PopUp} from '@components/Modal/Modal';
 import {bookDataHandler} from '@utils/bookDataHandler';
 import {StackScreens, Title} from '@constants/Constants';
-import {LibraryBooksData, EGWhiteData} from '@constants/LibraryBooksData';
+import {
+  NobleCharacterData,
+  PrepareDaysData,
+  GodHeartData,
+  ItFinishedData,
+  BridegroomComingData,
+  PromisedLandData,
+  WeKingData,
+  IntoWorldData,
+} from '@constants/SearchDevotionals';
 import moment from 'moment';
 
-const allBooks = LibraryBooksData.concat(EGWhiteData);
+const allBooks = NobleCharacterData.concat(PrepareDaysData);
 
 export const SearchScreen = ({navigation}) => {
   const isSubscriptionActive = useSelector(
@@ -33,7 +44,7 @@ export const SearchScreen = ({navigation}) => {
   const [masterData, setMasterData] = React.useState([]);
   const [search, setSearch] = React.useState('');
   const [dropdown, setDropdown] = React.useState(false);
-  const [searchLabel, setSearchLabel] = React.useState('All');
+  const [searchLabel, setSearchLabel] = React.useState('Into All The World');
 
   const darkMode = {
     background: {
@@ -54,18 +65,37 @@ export const SearchScreen = ({navigation}) => {
   };
 
   React.useEffect(() => {
-    setFilteredData(allBooks);
-    setMasterData(allBooks);
+    setFilteredData(IntoWorldData);
+    setMasterData(IntoWorldData);
   }, []);
 
   React.useEffect(() => {
-    if (searchLabel === Title.EGWhite) {
-      setFilteredData(EGWhiteData);
-    } else if (searchLabel === Title.All) {
-      setFilteredData(allBooks);
-    } else if (searchLabel === Title.Devotional) {
-      setFilteredData(LibraryBooksData);
+    if (searchLabel === Title.TheNobleCharacter) {
+      setFilteredData(NobleCharacterData);
+      setMasterData(NobleCharacterData);
+    } else if (searchLabel === Title.PrepareForTheLastDays) {
+      setFilteredData(PrepareDaysData);
+      setMasterData(PrepareDaysData);
+    } else if (searchLabel === Title.GodKnowsTheHeart) {
+      setFilteredData(GodHeartData);
+      setMasterData(GodHeartData);
+    } else if (searchLabel === Title.ItIsFinished) {
+      setFilteredData(ItFinishedData);
+      setMasterData(ItFinishedData);
+    } else if (searchLabel === Title.TheBridegroomIsComing) {
+      setFilteredData(BridegroomComingData);
+      setMasterData(BridegroomComingData);
+    } else if (searchLabel === Title.JourneyToThePromisedLand) {
+      setFilteredData(PromisedLandData);
+      setMasterData(PromisedLandData);
+    } else if (searchLabel === Title.WeWantAKing) {
+      setFilteredData(WeKingData);
+      setMasterData(WeKingData);
+    } else if (searchLabel === Title.IntoAllTheWorld) {
+      setFilteredData(IntoWorldData);
+      setMasterData(IntoWorldData);
     }
+
   }, [searchLabel]);
 
   const searchFilter = text => {
@@ -93,15 +123,10 @@ export const SearchScreen = ({navigation}) => {
 
     try {
       selectedData = bookDataHandler(item);
-      const isEgWhite = EGWhiteData.find(elm => elm.title === item);
-
-      if (!isEgWhite) {
-        navigateHandler();
-        return;
-      } else {
-        navigateEGWhite();
-      }
-    } catch (e) {}
+      navigateHandler();
+    } catch (e) {
+      // Handle any potential errors here if needed
+    }
   };
 
   const navigateHandler = () => {
@@ -110,18 +135,34 @@ export const SearchScreen = ({navigation}) => {
     });
   };
 
-  const navigateEGWhite = () => {
-    navigation.navigate(StackScreens.EGWhiteScreen, {
-      bookData: selectedData,
-    });
-  };
+  const ItemView = ({ item }) => {
+    // Split search term into multiple words
+    const searchTerms = search.trim().toUpperCase().split(' ');
 
-  const ItemView = ({item}) => {
+    // Split bibleText into words to highlight each matching term
+    const highlightedText = item.title.split(' ').map((word, index) => {
+      const isMatch = searchTerms.some(term => word.toUpperCase().includes(term));
+
+      return (
+        <Text
+          key={index}
+          style={isMatch ? [styles.highlightedText, darkMode.text] : darkMode.text}
+        >
+          {word}{' '}
+        </Text>
+      );
+    });
+
     return (
       <TouchableOpacity onPress={() => onPressHandler(item.title)}>
-        <Text style={[styles.itemViewText, darkMode.background, darkMode.text]}>
-          {item.title.toUpperCase()}
-        </Text>
+        <View style={[styles.itemContainer, darkMode.background]}>
+          <Text style={[styles.dateText, darkMode.background]}>
+            {item.dayNumber} {/* Display the date */}
+          </Text>
+          <Text style={[styles.itemViewText, darkMode.background]}>
+            {highlightedText}
+          </Text>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -156,6 +197,9 @@ export const SearchScreen = ({navigation}) => {
         </TouchableOpacity>
       </View>
 
+      <Text style={{ color: Colors.themeBlue, fontSize: 18, fontWeight: 'bold', 
+      marginLeft: 30, marginTop: -10, marginBottom: 15}}>RESULTS</Text>
+
       <View style={[styles.dataView, darkMode.background]}>
         <FlatList
           data={filteredData}
@@ -169,23 +213,65 @@ export const SearchScreen = ({navigation}) => {
           <View>
             <TouchableOpacity
               style={styles.dropdownCategory}
-              onPress={() => searchLabelHandler(Title.All)}>
-              <Text style={[styles.dropdownText, darkMode.text]}>All</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.dropdownCategory}
-              onPress={() => searchLabelHandler(Title.Devotional)}>
+              onPress={() => searchLabelHandler(Title.TheNobleCharacter)}>
               <Text style={[styles.dropdownText, darkMode.text]}>
-                Devotional
+                The Noble Character
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.dropdownCategory}
-              onPress={() => searchLabelHandler(Title.EGWhite)}>
+              onPress={() => searchLabelHandler(Title.PrepareForTheLastDays)}>
               <Text style={[styles.dropdownText, darkMode.text]}>
-                E.G. Commentary
+                Prepare For The Last Days
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.dropdownCategory}
+              onPress={() => searchLabelHandler(Title.GodKnowsTheHeart)}>
+              <Text style={[styles.dropdownText, darkMode.text]}>
+                God Knows The Heart
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.dropdownCategory}
+              onPress={() => searchLabelHandler(Title.ItIsFinished)}>
+              <Text style={[styles.dropdownText, darkMode.text]}>
+                It Is Finished
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.dropdownCategory}
+              onPress={() => searchLabelHandler(Title.TheBridegroomIsComing)}>
+              <Text style={[styles.dropdownText, darkMode.text]}>
+                The Bridegroom Is Coming
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.dropdownCategory}
+              onPress={() => searchLabelHandler(Title.JourneyToThePromisedLand)}>
+              <Text style={[styles.dropdownText, darkMode.text]}>
+                Journey To The Promised Land
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.dropdownCategory}
+              onPress={() => searchLabelHandler(Title.WeWantAKing)}>
+              <Text style={[styles.dropdownText, darkMode.text]}>
+                We Want A King
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.dropdownCategory}
+              onPress={() => searchLabelHandler(Title.IntoAllTheWorld)}>
+              <Text style={[styles.dropdownText, darkMode.text]}>
+                Into All The World
               </Text>
             </TouchableOpacity>
           </View>

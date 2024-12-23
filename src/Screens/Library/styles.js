@@ -18,7 +18,7 @@ export const styles = {
     height: hp('25%'),
     width: wp('30%'),
     borderRadius: 5,
-    resizeMode: 'stretch',
+    resizeMode: 'contain',
     backgroundColor: Colors.gray300,
   },
 };

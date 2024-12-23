@@ -3,6 +3,11 @@ import {BookTitles} from './Books';
 
 export const LibraryBooksData = [
   {
+    title: 'Into All The World',
+    image: Images.IntoWorld,
+    date: '2025',
+  },
+  {
     title: 'We Want A King',
     image: Images.WeWantKing,
     date: '2024',

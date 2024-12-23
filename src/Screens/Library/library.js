@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 import React from 'react';
 import IAP from 'react-native-iap';
 import {useDispatch, useSelector} from 'react-redux';
@@ -29,11 +30,11 @@ import {TitleBanner} from '@components/Library/TitleBanner/TitleBanner';
 import {LibraryBooksData, EGWhiteData} from '@constants/LibraryBooksData';
 
 const currentYearBooks = LibraryBooksData.filter(
-  item => item.date === CalendarUtil.currentYear,
+  item => item.date === (parseInt(CalendarUtil.currentYear) + 1).toString(),
 );
 
 const previousYearBooks = LibraryBooksData.filter(
-  item => item.date !== CalendarUtil.currentYear,
+  item => parseInt(item.date) <= parseInt(CalendarUtil.currentYear),
 );
 
 export const LibraryScreen = ({navigation}) => {

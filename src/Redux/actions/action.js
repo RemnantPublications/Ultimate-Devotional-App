@@ -12,6 +12,10 @@ import {
   ALREADY_BOOKMARKED,
   REMOVE_ALL_BOOKMARK,
   ALREADY_BOOKMARKED_SUCCESS,
+  ADD_HIGHLIGHT,
+  EDIT_HIGHLIGHT,
+  REMOVE_HIGHLIGHT,
+  REMOVE_ALL_HIGHLIGHT,
 } from '../actions/actionTypes';
 
 export const addItem = (title, description, date) => {
@@ -92,6 +96,61 @@ export const checkBookmarkedSuccess = value => {
   return {
     type: ALREADY_BOOKMARKED_SUCCESS,
     value,
+  };
+};
+
+export const addHighlight = ({
+  text,
+  start,
+  end,
+  color,
+  note,
+  devotionalId,
+  devotionalTitle,
+  devotionalDay,
+  devotionalCover,
+  sectionTitle,
+  paragraphIndex,
+}) => {
+  return {
+    type: ADD_HIGHLIGHT,
+    text,
+    start,
+    end,
+    color,
+    note,
+    devotionalId,
+    devotionalTitle,
+    devotionalDay,
+    devotionalCover,
+    sectionTitle,
+    paragraphIndex,
+  };
+};
+
+export const editHighlight = (index, text, start, end, color, note) => {
+  return {
+    type: EDIT_HIGHLIGHT,
+    index,
+    text,
+    start,
+    end,
+    color,
+    note,
+  };
+};
+
+export const removeHighlight = index => {
+  return {
+    type: REMOVE_HIGHLIGHT,
+    index,
+  };
+};
+
+export const removeAllHighlight = index => {
+  return {
+    type: REMOVE_ALL_HIGHLIGHT,
+    index,
   };
 };
 

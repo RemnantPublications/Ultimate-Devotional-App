@@ -20,11 +20,23 @@ export default {
     paddingLeft: 10,
   },
   itemViewText: {
-    padding: 15,
+    padding: 7,
     backgroundColor: Colors.white,
     marginHorizontal: 10,
     borderBottomColor: Colors.gray300,
     borderBottomWidth: 1,
+    marginLeft: 45,
+  },
+  dateText: {
+    fontSize: 16,
+    color: Colors.themeBlue,
+    fontWeight: '600',
+    marginBottom: -3,
+    marginLeft: 50,
+  },
+  highlightedText: {
+    fontWeight: 'bold',
+    color: Colors.highlightColor, // Set a color for highlights
   },
   itemSeparator: {
     height: 0.5,

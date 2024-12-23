@@ -5,6 +5,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import {useTheme} from '../../../theme/ThemeProvider';
 import {removeAllBookmark} from '../../../Redux/actions/action';
+import {removeAllHighlight} from '../../../Redux/actions/action';
 
 export const BookmarkHeader = () => {
   const {colors, isDark} = useTheme();

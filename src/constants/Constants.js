@@ -12,6 +12,7 @@ export const StackScreens = {
   PaywallScreen: 'PayWallScreen',
   EGWhiteScreen: 'EGWhiteScreen',
   BookmarkScreen: 'BookmarkScreen',
+  HighlightScreen: 'HighlightScreen',
   ReminderScreen: 'ReminderScreen',
 };
 
@@ -20,6 +21,14 @@ export const Title = {
   Devotional: 'Devotional',
   EGWhite: 'E.G. White Commentary',
   PreviousYear: 'Previous Years Devotionals',
+  TheNobleCharacter: ' The Noble Character',
+  PrepareForTheLastDays: 'Prepare For The Last Days',
+  GodKnowsTheHeart: 'God Knows The Heart',
+  ItIsFinished: 'It Is Finished',
+  TheBridegroomIsComing: 'The Bridegroom Is Coming',
+  JourneyToThePromisedLand: 'Journey To The Promised Land',
+  WeWantAKing: 'We Want A King',
+  IntoAllTheWorld: 'Into All The World',
 };
 
 // Note: Configuration for Subscription

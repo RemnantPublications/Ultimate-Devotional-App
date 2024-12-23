@@ -28,12 +28,7 @@ const menuItems = [
   {
     iconName: 'highlight',
     itemTitle: 'Highlights',
-    navigateTo: StackScreens.BookmarkScreen,
-  },
-  {
-    iconName: 'note',
-    itemTitle: 'Notes',
-    navigateTo: StackScreens.BookmarkScreen,
+    navigateTo: StackScreens.HighlightScreen,
   },
   {
     iconName: 'payment',

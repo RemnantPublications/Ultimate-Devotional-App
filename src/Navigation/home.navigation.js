@@ -10,8 +10,10 @@ import {EGWhieScreen} from '../Screens/EGWhite/EGWhite';
 import {PaywallScreen} from '../Screens/Paywall/Paywall';
 import {ReminderScreen} from '../Screens/Reminder/Reminder';
 import {BookmarkScreen} from '../Screens/Bookmark/bookmark';
+import {HighlightScreen} from '../Screens/Highlight/highlight';
 import {CouponScreen} from '../Screens/Coupon/coupon.screen';
 import {BookmarkHeader} from '../Components/Read/Bookmark/Header';
+import {HighlightHeader} from '../Components/Read/Highlight/Header';
 import {EditPrayer} from '../Components/PrayerJournal/EditPrayer/editPrayer';
 
 const Stack = createStackNavigator();
@@ -88,6 +90,22 @@ export const HomeStack = () => {
             },
             headerTintColor: colors.text,
             headerRight: () => <BookmarkHeader />,
+          };
+        }}
+      />
+      <Stack.Screen
+        name={StackScreens.HighlightScreen}
+        component={HighlightScreen}
+        options={({route}) => {
+          return {
+            ...TransitionPresets.ScaleFromCenterAndroid,
+            title: 'Highlights & Notes',
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: colors.background,
+            },
+            headerTintColor: colors.text,
+            headerRight: () => <HighlightHeader />,
           };
         }}
       />
