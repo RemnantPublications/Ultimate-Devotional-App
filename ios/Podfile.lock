@@ -338,11 +338,11 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
-  - AppAuth (1.7.5):
-    - AppAuth/Core (= 1.7.5)
-    - AppAuth/ExternalUserAgent (= 1.7.5)
-  - AppAuth/Core (1.7.5)
-  - AppAuth/ExternalUserAgent (1.7.5):
+  - AppAuth (1.7.6):
+    - AppAuth/Core (= 1.7.6)
+    - AppAuth/ExternalUserAgent (= 1.7.6)
+  - AppAuth/Core (1.7.6)
+  - AppAuth/ExternalUserAgent (1.7.6):
     - AppAuth/Core
   - boost (1.76.0)
   - BoringSSL-GRPC (0.0.7):
@@ -586,7 +586,7 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (1.7.2)
-  - leveldb-library (1.22.5)
+  - leveldb-library (1.22.6)
   - libevent (2.1.12)
   - lottie-ios (3.2.3)
   - lottie-react-native (4.1.3):
@@ -805,8 +805,6 @@ PODS:
     - React-Core
   - react-native-selectable-text (1.9.0):
     - React
-  - react-native-slider (4.5.2):
-    - React-Core
   - react-native-track-player (2.1.4):
     - React-Core
     - SwiftAudioEx (= 0.14.7)
@@ -875,9 +873,9 @@ PODS:
     - React-jsi (= 0.67.5)
     - React-logger (= 0.67.5)
     - React-perflogger (= 0.67.5)
-  - RNBootSplash (3.2.5):
+  - RNBootSplash (3.2.7):
     - React-Core
-  - RNCAsyncStorage (1.23.1):
+  - RNCAsyncStorage (2.1.0):
     - React-Core
   - RNCClipboard (1.14.1):
     - React-Core
@@ -976,7 +974,6 @@ DEPENDENCIES:
   - react-native-context-menu-view (from `../node_modules/react-native-context-menu-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-selectable-text (from `../node_modules/@rob117/react-native-selectable-text`)"
-  - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
   - react-native-track-player (from `../node_modules/react-native-track-player`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -1098,8 +1095,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-selectable-text:
     :path: "../node_modules/@rob117/react-native-selectable-text"
-  react-native-slider:
-    :path: "../node_modules/@react-native-community/slider"
   react-native-track-player:
     :path: "../node_modules/react-native-track-player"
   React-perflogger:
@@ -1167,7 +1162,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
-  AppAuth: 501c04eda8a8d11f179dbe8637b7a91bb7e5d2fa
+  AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
@@ -1202,7 +1197,7 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
-  leveldb-library: e8eadf9008a61f9e1dde3978c086d2b6d9b9dc28
+  leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   lottie-react-native: b561920bba7ec727ec94a473b683cffba00faece
@@ -1225,7 +1220,6 @@ SPEC CHECKSUMS:
   react-native-context-menu-view: 30915369a9b5887904c571b616653acf3f1c8edb
   react-native-safe-area-context: 9e40fb181dac02619414ba1294d6c2a807056ab9
   react-native-selectable-text: 72eedc4f7c886670ba9796ce488ec6e5b7c524ba
-  react-native-slider: bc212e8d10ee28f51cd0db28c7f23827e6adec0a
   react-native-track-player: 2ea788d4fae0efe18b85cd3fcda92e7d40000d4b
   React-perflogger: d32ee13196f4ae2e4098fb7f8e7ed4f864c6fb0f
   React-RCTActionSheet: 81779c09e34a6a3d6b15783407ba9016a774f535
@@ -1239,8 +1233,8 @@ SPEC CHECKSUMS:
   React-RCTVibration: c3b8a3245267a3849b0c7cb91a37606bf5f3aa65
   React-runtimeexecutor: 434efc9e5b6d0f14f49867f130b39376c971c1aa
   ReactCommon: a30c2448e5a88bae6fcb0e3da124c14ae493dac1
-  RNBootSplash: 75faf048f66eebe1650e91afdb8c2205fefc1870
-  RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
+  RNBootSplash: f31eba8f6d496e2029859e06e5582cac4607256d
+  RNCAsyncStorage: cc6479c4acd84cc7004946946c8afe30b018184d
   RNCClipboard: 0a720adef5ec193aa0e3de24c3977222c7e52a37
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPushNotificationIOS: 64218f3c776c03d7408284a819b2abfda1834bc8

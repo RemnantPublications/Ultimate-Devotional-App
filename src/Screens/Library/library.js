@@ -30,11 +30,11 @@ import {TitleBanner} from '@components/Library/TitleBanner/TitleBanner';
 import {LibraryBooksData, EGWhiteData} from '@constants/LibraryBooksData';
 
 const currentYearBooks = LibraryBooksData.filter(
-  item => item.date === (parseInt(CalendarUtil.currentYear) + 1).toString(),
+  item => item.date === parseInt(CalendarUtil.currentYear).toString(),
 );
 
 const previousYearBooks = LibraryBooksData.filter(
-  item => parseInt(item.date) <= parseInt(CalendarUtil.currentYear),
+  item => parseInt(item.date) < parseInt(CalendarUtil.currentYear),
 );
 
 export const LibraryScreen = ({navigation}) => {

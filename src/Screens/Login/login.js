@@ -18,7 +18,7 @@ export const LoginScreen = ({navigation}) => {
     if (user) {
       navigation.navigate('HomeStack');
     }
-  }, [user]);
+  }, [navigation, user]);
 
   return (
     <View style={Global.container}>

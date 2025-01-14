@@ -5,6 +5,8 @@ import {SelectableText} from '@rob117/react-native-selectable-text';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {addHighlight} from '@actions/action';
+import firestore from '@react-native-firebase/firestore';
+import {AuthContext} from '@navigation/authProvider';
 import {PopUp} from '@components/Modal/Modal';
 import {styles} from './styles';
 
@@ -25,6 +27,8 @@ export const RenderText = ({
   const [currentSelection, setCurrentSelection] = useState(null);
   const [currentSelectionText, setCurrentSelectionText] = useState('');
   const dispatch = useDispatch();
+
+  const {user} = React.useContext(AuthContext);
 
   // Ensure highlights are kept for each section separately
   const highlights = useSelector(state => state.getHighlight.list || []);
@@ -47,17 +51,30 @@ export const RenderText = ({
     setPopupVisible(true);
   };
 
-  const saveHighlight = () => {
-    // if (
-    //   currentSelection.start < 0 ||
-    //   currentSelection.end > content.length ||
-    //   currentSelection.start >= currentSelection.end
-    // ) {
-    //   console.error('Invalid highlight range:', currentSelection);
-    //   return; // Abort saving invalid highlights
-    // }
+  const saveHighlight = async () => {
+    if (!user) {
+      console.error('User is not authenticated');
+      return;
+    }
 
-    // Save the highlight to the Redux store
+    console.log('Authenticated User UID:', user.email); // Log the user UID
+
+    // Construct the highlight object
+    const highlightData = {
+      text: currentSelectionText,
+      start: currentSelection.start,
+      end: currentSelection.end,
+      color: selectedColor,
+      note,
+      devotionalId,
+      devotionalTitle,
+      devotionalDay,
+      devotionalCover,
+      sectionTitle, // Save section title as part of the highlight
+      paragraphIndex,
+      email: user.email,
+    };
+
     dispatch(
       addHighlight({
         text: currentSelectionText,
@@ -73,6 +90,21 @@ export const RenderText = ({
         paragraphIndex,
       }),
     );
+
+    try {
+      // Dynamically create the 'highlights' collection under the 'usersData/{userId}'
+      const highlightRef = await firestore()
+        .collection('usersData') // Using usersData as the collection
+        .doc(user.uid) // Use the authenticated user's UID as the document ID
+        .collection('highlights') // Subcollection for highlights
+        .add(highlightData); // Add the new highlight document to the collection
+
+      console.log('Highlight saved to Firestore with ID:', highlightRef.id);
+    } catch (error) {
+      console.error('Error saving highlight to Firestore:', error);
+    }
+
+    // Close the popup after saving
     closePopup();
   };
 
