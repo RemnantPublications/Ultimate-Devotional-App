@@ -4,14 +4,14 @@ import crashlytics from '@react-native-firebase/crashlytics';
 import TrackPlayer, {State, Capability} from 'react-native-track-player';
 
 import {delay} from './delayHelpers';
-import {BookTitles, AudioDir, fetchAudioBooks} from '../constants/Books';
+import {BookTitles, AudioDir} from '../constants/Books';
 
 export const setupPlayer = async () => {
   await TrackPlayer.setupPlayer({});
   crashlytics().log('SetupPlayer Helper.');
 
   await TrackPlayer.updateOptions({
-    stopWithApp: true,
+    stoppingAppPausesPlayback: true,
     capabilities: [Capability.Play, Capability.Pause, Capability.Stop],
     compactCapabilities: [Capability.Play, Capability.Pause],
   });
