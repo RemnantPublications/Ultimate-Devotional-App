@@ -9,7 +9,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {SafeAreaView, StatusBar} from 'react-native';
-import {AppearanceProvider} from 'react-native-appearance';
 import {PersistGate} from 'redux-persist/integration/react';
 
 import Colors from './src/Styles/Colors';
@@ -21,19 +20,15 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <AppearanceProvider>
-          <ThemeProvider>
-            <SafeAreaView
-              style={{backgroundColor: Colors.themeBlue, flex: 0}}
-            />
-            <StatusBar
-              backgroundColor={Colors.themeBlue}
-              barStyle="light-content"
-            />
+        <ThemeProvider>
+          <SafeAreaView style={{backgroundColor: Colors.themeBlue, flex: 0}} />
+          <StatusBar
+            backgroundColor={Colors.themeBlue}
+            barStyle="light-content"
+          />
 
-            <AppNavigation />
-          </ThemeProvider>
-        </AppearanceProvider>
+          <AppNavigation />
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   );
