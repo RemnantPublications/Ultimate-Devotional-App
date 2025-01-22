@@ -24,7 +24,7 @@ module.exports = async function setup() {
       TrackPlayer.stop();
     } else {
       if (e.paused === true) {
-        const playerState = await TrackPlayer.getState();
+        const playerState = await TrackPlayer.getPlaybackState();
         wasPausedByDuck = playerState !== State.Paused;
         TrackPlayer.pause();
       } else {

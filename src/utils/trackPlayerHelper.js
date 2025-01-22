@@ -1,17 +1,28 @@
 import {Alert} from 'react-native';
 import storage from '@react-native-firebase/storage';
 import crashlytics from '@react-native-firebase/crashlytics';
-import TrackPlayer, {State, Capability} from 'react-native-track-player';
+import TrackPlayer, {
+  State,
+  Capability,
+  AppKilledPlaybackBehavior,
+} from 'react-native-track-player';
 
 import {delay} from './delayHelpers';
 import {BookTitles, AudioDir} from '../constants/Books';
 
+let isPlayerSetup = false;
+
 export const setupPlayer = async () => {
-  await TrackPlayer.setupPlayer({});
+  if (!isPlayerSetup) {
+    await TrackPlayer.setupPlayer({});
+    isPlayerSetup = true;
+  }
   crashlytics().log('SetupPlayer Helper.');
 
   await TrackPlayer.updateOptions({
-    stoppingAppPausesPlayback: true,
+    android: {
+      appKilledPlaybackBehavior: AppKilledPlaybackBehavior.ContinuePlayback,
+    },
     capabilities: [Capability.Play, Capability.Pause, Capability.Stop],
     compactCapabilities: [Capability.Play, Capability.Pause],
   });
@@ -53,7 +64,7 @@ export const addTracks = async (
       });
       crashlytics().log('Add Tracks if url is fetched.');
 
-      currentTrack = await TrackPlayer.getCurrentTrack();
+      currentTrack = await TrackPlayer.getActiveTrack();
     }
 
     if (currentTrack !== null) {
@@ -63,12 +74,13 @@ export const addTracks = async (
   } catch (err) {
     crashlytics().recordError('Add Tracks Helper.', err);
     Alert.alert('Error playing audio.');
+  } finally {
     audioLoadingHandler(false);
   }
 };
 
 export const handlePlayPause = async playbackState => {
-  const currentTrack = await TrackPlayer.getCurrentTrack();
+  const currentTrack = await TrackPlayer.getActiveTrack();
 
   if (currentTrack !== null) {
     if (playbackState === State.Paused) {
@@ -85,8 +97,8 @@ export const handleStopPlayer = async () => {
   try {
     await TrackPlayer.pause();
     await TrackPlayer.reset();
-    await TrackPlayer.stop();
-    await TrackPlayer.destroy();
+    // await TrackPlayer.stop();
+    // await TrackPlayer.destroy();
   } catch (err) {}
 };
 

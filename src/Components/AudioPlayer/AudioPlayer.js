@@ -58,7 +58,7 @@ export const AudioPlayer = ({
   const isFocused = useIsFocused();
   React.useEffect(() => {
     if (isFocused) {
-      setupPlayer;
+      setupPlayer();
       crashlytics().log('Setup Player.');
       addTracks(bookTitle, date, audioLoadingHandler, item.title, bookCover);
       crashlytics().log('Add Tracks.');
@@ -68,23 +68,23 @@ export const AudioPlayer = ({
       setLoading(false);
       setRepeat('off');
     };
-  }, [isFocused]);
+  }, [isFocused, bookCover, bookTitle, date, item.title]);
 
   const repeatIcon = () => {
-    if (repeat == 'off') {
+    if (repeat === 'off') {
       return 'repeat';
     }
-    if (repeat == 'track') {
+    if (repeat === 'track') {
       return 'repeat-once';
     }
   };
 
   const repeatHandler = () => {
-    if (repeat == 'off') {
+    if (repeat === 'off') {
       TrackPlayer.setRepeatMode(RepeatMode.Track);
       setRepeat('track');
     }
-    if (repeat == 'track') {
+    if (repeat === 'track') {
       TrackPlayer.setRepeatMode(RepeatMode.Off);
       setRepeat('off');
     }
@@ -96,7 +96,8 @@ export const AudioPlayer = ({
         <TouchableOpacity
           style={{paddingHorizontal: 7}}
           onPress={() => {
-            handleStopPlayer(), pressHandler(false);
+            handleStopPlayer();
+            pressHandler(false);
           }}>
           <Ionicon name="close-circle" size={20} color={Colors.gray600} />
         </TouchableOpacity>
@@ -118,8 +119,9 @@ export const AudioPlayer = ({
               style={styles.loadingIndicator}
             />
           ) : (
-            <TouchableOpacity onPress={() => handlePlayPause(playbackState)}>
-              {playbackState == State.Playing ? (
+            <TouchableOpacity
+              onPress={() => handlePlayPause(playbackState.state)}>
+              {playbackState.state === State.Playing ? (
                 <Ionicon name="pause" size={40} color={Colors.gray800} />
               ) : (
                 <Ionicon name="play" size={40} color={Colors.gray800} />
@@ -137,7 +139,7 @@ export const AudioPlayer = ({
           maximumTrackTintColor={isDark ? Colors.white : Colors.gray300}
           thumbTintColor={Colors.gray800}
           value={audioProgress.position}
-          renderThumbComponent={() => <View></View>}
+          renderThumbComponent={() => <View />}
           disabled
         />
       </View>
