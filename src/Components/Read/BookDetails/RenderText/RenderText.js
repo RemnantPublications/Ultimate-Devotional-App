@@ -71,7 +71,7 @@ export const RenderText = ({
       devotionalDay,
       devotionalCover,
       sectionTitle, // Save section title as part of the highlight
-      paragraphIndex,
+      paragraphIndex: paragraphIndex ?? null, // Set to null if undefined
       email: user.email,
     };
 
@@ -90,6 +90,7 @@ export const RenderText = ({
         paragraphIndex,
       }),
     );
+    console.log('Highlight Data:', highlightData);
 
     try {
       // Dynamically create the 'highlights' collection under the 'usersData/{userId}'

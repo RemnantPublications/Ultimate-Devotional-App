@@ -14,6 +14,7 @@ import {
   ALREADY_BOOKMARKED_SUCCESS,
   ADD_HIGHLIGHT,
   EDIT_HIGHLIGHT,
+  SET_HIGHLIGHT,
   REMOVE_HIGHLIGHT,
   REMOVE_ALL_HIGHLIGHT,
 } from '../actions/actionTypes';
@@ -125,6 +126,13 @@ export const addHighlight = ({
     devotionalCover,
     sectionTitle,
     paragraphIndex,
+  };
+};
+
+export const setHighlight = highlights => {
+  return {
+    type: SET_HIGHLIGHT,
+    data: highlights, // Array of highlights to replace the existing Redux state
   };
 };
 

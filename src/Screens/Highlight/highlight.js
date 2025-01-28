@@ -2,6 +2,8 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {View, TouchableOpacity, Text, FlatList, Image} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+import {AuthContext} from '@navigation/authProvider';
 
 import {styles} from './styles';
 import Colors from '../../Styles/Colors';
@@ -12,6 +14,7 @@ export const HighlightScreen = () => {
   const {colors, isDark} = useTheme();
   const highlights = useSelector(state => state.getHighlight.list);
   const dispatch = useDispatch();
+  const {user} = React.useContext(AuthContext);
 
   // Note: Dark mode scheme
   const darkMode = {
@@ -29,9 +32,28 @@ export const HighlightScreen = () => {
     },
   };
 
-  const deleteHighlight = index => {
-    dispatch(removeHighlight(index));
+  const deleteHighlight = async id => {
+    try {
+      // Remove from Firestore
+      await firestore()
+        .collection('usersData')
+        .doc(user.uid) // Replace with actual user ID, possibly from AuthContext or Redux state
+        .collection('highlights')
+        .doc(id)
+        .delete();
+
+      console.log(`Highlight with ID ${id} deleted from Firestore`);
+
+      // Remove from Redux
+      dispatch(removeHighlight(id));
+    } catch (error) {
+      console.error('Error deleting highlight:', error);
+    }
   };
+
+  // const deleteHighlight = index => {
+  //   dispatch(removeHighlight(index));
+  // };
 
   const ItemView = ({item}) => {
     return (

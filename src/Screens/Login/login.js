@@ -6,9 +6,12 @@ import Global from '../../Styles/Global';
 import Images from '../../constants/Images';
 import {AuthContext} from '../../Navigation/authProvider';
 import {SocialSignInButton} from '../../Components/SocialSignInButton/SocialSignInButton';
+import {onUserLogin} from '../../Navigation/firebaseFetchData';
+import {useDispatch} from 'react-redux';
 
 export const LoginScreen = ({navigation}) => {
   const {googleLogin, error, user} = React.useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const onPressHandler = () => {
     googleLogin();
@@ -17,8 +20,9 @@ export const LoginScreen = ({navigation}) => {
   React.useEffect(() => {
     if (user) {
       navigation.navigate('HomeStack');
+      onUserLogin(user, dispatch);
     }
-  }, [navigation, user]);
+  }, [navigation, user, dispatch]);
 
   return (
     <View style={Global.container}>

@@ -1,6 +1,7 @@
 // eslint-disable-next-line prettier/prettier
 import {
   UPDATE_HIGHLIGHT,
+  SET_HIGHLIGHT,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -13,6 +14,11 @@ export const getHighlight = (state = initialState, action) => {
       return {
         ...state,
         list: action.data,
+      };
+    case SET_HIGHLIGHT:
+      return {
+        ...state,
+        list: action.data, // Replace all highlights with the fetched list
       };
     default:
       return state;
