@@ -29,6 +29,7 @@ export const Title = {
   JourneyToThePromisedLand: 'Journey To The Promised Land',
   WeWantAKing: 'We Want A King',
   IntoAllTheWorld: 'Into All The World',
+  GodSaid: 'God Said',
 };
 
 // Note: Configuration for Subscription

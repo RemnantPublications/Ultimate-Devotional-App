@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "108135154371-8toe9ur0glldplu88hp1dvglv7blptqu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsb.ultimatedevotional",
+            "certificate_hash": "d9e6545ad5bd7f23b5a940d5b50fb444e0e96468"
+          }
+        },
+        {
+          "client_id": "108135154371-aga86c3lrj7clu3b9hj4grgq2sbj7pda.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsb.ultimatedevotional",
+            "certificate_hash": "ba8707ab1cdd9769dc6cf2149b5981a83c4c1e06"
+          }
+        },
+        {
           "client_id": "108135154371-e6gfcbfnd1gmcndd2vpdp0c26o29rfb2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

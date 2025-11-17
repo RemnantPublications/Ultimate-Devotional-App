@@ -29,6 +29,8 @@ export default {
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FWeWantKing.jpg?alt=media&token=c25bff13-9f15-4ef8-bfd4-879f7385bec7',
   IntoWorld:
     'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FIntoWorld.jpg?alt=media&token=fca7c12f-bfec-4aaf-8c38-d9bfe7943dda',
+  GodSaid:
+    'https://firebasestorage.googleapis.com/v0/b/rn-ultimate-devotional.appspot.com/o/Images%2FDevotional_Book_Covers%2FGodSaid.jpg?alt=media&token=62ff91d2-59a9-40fb-ba01-66e1fa43b77d',
 
   // EG White
   Education:

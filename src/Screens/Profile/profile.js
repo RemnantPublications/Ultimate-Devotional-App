@@ -2,7 +2,14 @@ import React from 'react';
 import DeviceInfo from 'react-native-device-info';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {CommonActions, useNavigation} from '@react-navigation/native';
-import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Alert,
+} from 'react-native';
 
 import styles from './styles';
 import Colors from '@styles/Colors';
@@ -11,8 +18,10 @@ import {useTheme} from '@theme/ThemeProvider';
 import {Toggle} from '@components/Toggle/Toggle';
 import {StackScreens} from '@constants/Constants';
 import {AuthContext} from '@navigation/authProvider';
-import {ConfirmBox} from '@components/ConfirmBox/confirmBox';
+import {DeleteAccountConfirmBox} from '@components/ConfirmDeleteAccount/confirm'; // New import
 import {ToggleMessage} from '@components/Toggle/ToggleMessage';
+import {ConfirmBox} from '@components/ConfirmBox/confirmBox';
+import {Platform} from 'react-native';
 
 const menuItems = [
   {
@@ -35,14 +44,22 @@ const menuItems = [
     itemTitle: 'Subscription',
     navigateTo: StackScreens.PaywallScreen,
   },
+  ...(Platform.OS === 'android'
+    ? [
+        {
+          iconName: 'card-giftcard',
+          itemTitle: 'Claim Coupon',
+          navigateTo: StackScreens.CouponScreen,
+        },
+      ]
+    : []),
   {
-    iconName: 'card-giftcard',
-    itemTitle: 'Claim Coupon',
-    navigateTo: StackScreens.CouponScreen,
+    iconName: 'delete-forever',
+    itemTitle: 'Delete Account',
   },
 ];
 
-const MenuItems = ({iconName, navigateTo, itemTitle}) => {
+const MenuItems = ({iconName, navigateTo, itemTitle, onPress}) => {
   const navigation = useNavigation();
   const {colors} = useTheme();
   const darkMode = {
@@ -58,7 +75,13 @@ const MenuItems = ({iconName, navigateTo, itemTitle}) => {
       <Icon name={iconName} size={25} color={Colors.gray600} />
       <TouchableOpacity
         style={styles.dailyReminder}
-        onPress={() => navigation.navigate(navigateTo)}>
+        onPress={
+          onPress
+            ? onPress
+            : navigateTo
+            ? () => navigation.navigate(navigateTo)
+            : null
+        }>
         <Text style={[styles.reminderText, darkMode.text]}>{itemTitle}</Text>
       </TouchableOpacity>
     </View>
@@ -69,14 +92,29 @@ export const ProfileScreen = ({navigation}) => {
   const {colors} = useTheme();
   const {user, logout} = React.useContext(AuthContext);
   const [confirmLogout, setConfirmLogout] = React.useState(false);
+  const [confirmDelete, setConfirmDelete] = React.useState(false); // State for delete confirmation
 
   const confirmLogoutHandler = action => {
     setConfirmLogout(action);
   };
 
+  const confirmDeleteHandler = action => {
+    setConfirmDelete(action);
+  };
+
   const logoutConfirm = () => {
     setConfirmLogout(false);
     logout();
+  };
+
+  const deleteAccountConfirm = () => {
+    setConfirmDelete(false);
+    // Add account deletion logic here, for example, making an API call to delete the account
+    Alert.alert(
+      'Account Deleted',
+      'Your account has been successfully deleted.',
+    );
+    logout(); // Logout user after deletion
   };
 
   React.useEffect(() => {
@@ -130,7 +168,11 @@ export const ProfileScreen = ({navigation}) => {
             key={index}
             iconName={item.iconName}
             itemTitle={item.itemTitle}
-            navigateTo={item.navigateTo}
+            onPress={
+              item.itemTitle === 'Delete Account'
+                ? () => confirmDeleteHandler(true)
+                : () => item.navigateTo && navigation.navigate(item.navigateTo)
+            }
           />
         ))}
       </ScrollView>
@@ -152,6 +194,20 @@ export const ProfileScreen = ({navigation}) => {
           buttonTitle="logout"
           from="profile"
           onPressAction={logoutConfirm}
+          user={user}
+          navigation={navigation}
+        />
+      </View>
+
+      {/* Delete Account Button */}
+      <View>
+        <DeleteAccountConfirmBox // Use the new delete account confirmation box
+          visible={confirmDelete}
+          pressHandler={confirmDeleteHandler}
+          title="Delete Account"
+          buttonTitle="Delete"
+          from="profile"
+          onPressAction={deleteAccountConfirm}
           user={user}
           navigation={navigation}
         />

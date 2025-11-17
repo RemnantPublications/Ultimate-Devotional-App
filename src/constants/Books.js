@@ -6,6 +6,7 @@ import PrepareLastDays from '../constants/BookJson/prepare-for-the-last-days.jso
 import JourneyPromised from '../constants/BookJson/journey_to_the_promised_land.json';
 import WeWantKing from '../constants/BookJson/we-want-a-king.json';
 import IntoWorld from '../constants/BookJson/into-all-the-world.json';
+import GodSaid from '../constants/BookJson/god-said.json';
 
 // E.G. White Commentary
 import Education from '../constants/BookJson/EGWhite/ed.json';
@@ -28,6 +29,7 @@ export const BooksData = {
   JourneyPromised: JourneyPromised,
   WeWantKing: WeWantKing,
   IntoWorld: IntoWorld,
+  GodSaid: GodSaid,
 
   Education: Education,
   ActsApostles: ActsApostles,
@@ -50,6 +52,7 @@ export const BookTitles = {
   JourneyPromised: 'Journey To The Promised Land',
   WeWantKing: 'We Want A King',
   IntoWorld: 'Into All The World',
+  GodSaid: 'God Said',
 
   Education: 'Education',
   ActsApostles: 'Acts of the Apostles',
@@ -69,6 +72,7 @@ export const AudioDir = {
   JourneyPromised: 'jpl',
   WeWantKing: 'wwak',
   IntoWorld: 'iatw',
+  GodSaid: 'gs',
 };
 
 export const fetchAudioBooks = {
@@ -77,4 +81,5 @@ export const fetchAudioBooks = {
   JourneyPromised: 'Journey_to_the_Promised_Land',
   WeWantKing: 'We_Want_a_King',
   IntoWorld: 'Into_All_The_World',
+  GodSaid: 'God_Said',
 };

@@ -36,5 +36,6 @@ export default {
     fontSize: 11,
     textAlign: 'center',
     paddingHorizontal: 20,
+    marginTop: -30,
   },
 };

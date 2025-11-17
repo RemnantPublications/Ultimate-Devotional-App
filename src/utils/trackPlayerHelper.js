@@ -120,6 +120,12 @@ const getBookRef = (bookTitle, date) => {
   } else if (bookTitle === BookTitles.IntoWorld) {
     // bookDirectory = fetchAudioBooks.IntoWorld;
     audioDirectory = AudioDir.IntoWorld;
+  } else if (bookTitle === BookTitles.IntoWorld) {
+    // bookDirectory = fetchAudioBooks.IntoWorld;
+    audioDirectory = AudioDir.IntoWorld;
+  } else if (bookTitle === BookTitles.GodSaid) {
+    // bookDirectory = fetchAudioBooks.GodSaid;
+    audioDirectory = AudioDir.GodSaid;
   }
   const todayDate = date;
 

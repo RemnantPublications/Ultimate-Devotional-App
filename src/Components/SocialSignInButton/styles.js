@@ -18,7 +18,7 @@ export default {
     width: 35,
   },
   signInTextSection: {
-    paddingHorizontal: 70,
+    paddingHorizontal: 50,
     paddingVertical: 10,
     alignItems: 'center',
     justifyContent: 'center',
@@ -26,13 +26,13 @@ export default {
   signInText: {
     color: Colors.white,
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
     textAlignVertical: 'center',
   },
   errorSection: {
     flex: 0.9,
     justifyContent: 'flex-start',
-    marginTop: 25,
+    marginTop: 5,
   },
   errorText: {
     color: Colors.red,

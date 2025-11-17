@@ -1,13 +1,13 @@
 buildscript {
     ext {
         googlePlayServicesVersion = "+"
-        firebaseMessagingVersion = "21.1.0" 
+        firebaseMessagingVersion = "21.1.0"
         buildToolsVersion = "30.0.0"
         minSdkVersion = 24
-        compileSdkVersion = 33
-        targetSdkVersion = 34
+        compileSdkVersion = 34
+        targetSdkVersion = 35
         ndkVersion = "21.3.6528147"
-        kotlin_version = '1.8.0' // Add this line
+        kotlin_version = '1.8.0'
     }
     repositories {
         google()
@@ -17,9 +17,7 @@ buildscript {
         classpath("com.android.tools.build:gradle:7.4.2")
         classpath 'com.google.gms:google-services:4.3.15'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.6'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Add this line
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -28,16 +26,22 @@ allprojects {
         mavenCentral()
         mavenLocal()
         maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url("$rootDir/../node_modules/react-native/android")
         }
         maven {
-            // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
         }
 
         google()
-        // jcenter()
         maven { url 'https://www.jitpack.io' }
+    }
+
+    // ✅ Add this block to force SoLoader 0.10.4+ and REMOVER AFTER UPGRADING REACT NATIVE BEYOND 0.71.8
+    configurations.all {
+        resolutionStrategy {
+            force 'com.facebook.soloader:soloader:0.10.4'
+            force 'com.facebook.soloader:annotation:0.10.4'
+            force 'com.facebook.soloader:nativeloader:0.10.4'
+        }
     }
 }

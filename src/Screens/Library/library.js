@@ -1,13 +1,14 @@
 /* eslint-disable radix */
 import React from 'react';
-import IAP from 'react-native-iap';
+//import IAP from 'react-native-iap';
 import {useDispatch, useSelector} from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
+import Purchases from 'react-native-purchases';
 import {useFocusEffect} from '@react-navigation/native';
 import {
   View,
   Image,
-  Platform,
+  // Platform,
   Pressable,
   StatusBar,
   ScrollView,
@@ -24,14 +25,14 @@ import {bookDataHandler} from '@utils/bookDataHandler';
 import {StackScreens, Title} from '@constants/Constants';
 import {isSubscribed, isCouponActive} from '@actions/action';
 import {BookList} from '@components/Library/BookList/BookList';
-import {validReceiptPassword} from '../../constants/Constants';
+//import {validReceiptPassword} from '../../constants/Constants';
 import {CouponInfoModal} from '../Coupon/component/CouponInfoModal';
 import {TitleBanner} from '@components/Library/TitleBanner/TitleBanner';
 import {LibraryBooksData, EGWhiteData} from '@constants/LibraryBooksData';
 
 const currentYearBooks = LibraryBooksData.filter(
-  item => item.date === parseInt(CalendarUtil.currentYear).toString(),
-);
+  item => item.date >= parseInt(CalendarUtil.currentYear).toString()
+).sort((a, b) => parseInt(a.date) - parseInt(b.date));
 
 const previousYearBooks = LibraryBooksData.filter(
   item => parseInt(item.date) < parseInt(CalendarUtil.currentYear),
@@ -67,29 +68,15 @@ export const LibraryScreen = ({navigation}) => {
   };
 
   const isSubscriptionActive = React.useCallback(async () => {
-    if (Platform.OS === 'ios') {
-      const availablePurchases = await IAP.getAvailablePurchases();
-      const sortedPurchases = availablePurchases.sort(
-        (a, b) => b.transactionDate - a.transactionDate,
-      );
+    try {
+      const customerInfo = await Purchases.getCustomerInfo();
+      const isUserSubscribed =
+        Object.values(customerInfo.entitlements.active).length > 0;
 
-      const latestReceipt = sortedPurchases[0].transactionReceipt;
-
-      const validatedReceipt = await IAP.validateReceiptIos(
-        {
-          'receipt-data': latestReceipt,
-          password: validReceiptPassword,
-        },
-        true,
-      );
-
-      const {latest_receipt_info: latestReceiptInfo} = validatedReceipt;
-
-      const isSubscriptionValid = !!latestReceiptInfo.find(receipt => {
-        const expirationInMillisecond = Number(receipt.expires_date_ms);
-        return expirationInMillisecond > Date.now();
-      });
-      dispatch(isSubscribed(isSubscriptionValid));
+      dispatch(isSubscribed(isUserSubscribed));
+    } catch (error) {
+      console.error('Error checking subscription status:', error);
+      dispatch(isSubscribed(false));
     }
   }, [dispatch]);
 
@@ -124,20 +111,16 @@ export const LibraryScreen = ({navigation}) => {
     }
   }, [dispatch, firestoreUserRef, user]);
 
-  React.useEffect(() => {
-    IAP.initConnection();
-    isSubscriptionActive();
-
-    return () => {
-      IAP.endConnection();
-    };
-  }, [isSubscriptionActive]);
+  // React.useEffect(() => {
+  //   isSubscriptionActive();
+  // }, [isSubscriptionActive]);
 
   useFocusEffect(
     React.useCallback(() => {
+      isSubscriptionActive();
       checkIfCouponActive();
       checkCouponExpired();
-    }, [checkIfCouponActive, checkCouponExpired]),
+    }, [checkIfCouponActive, checkCouponExpired, isSubscriptionActive]),
   );
 
   const closeExpireModal = () => {

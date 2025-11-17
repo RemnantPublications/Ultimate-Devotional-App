@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-
+#import <Firebase/Firebase.h>
 #if RCT_DEV
 #import <React/RCTDevLoadingView.h>
 #endif
@@ -11,7 +11,6 @@
 #import "RNBootSplash.h"
 
 #import <UIKit/UIKit.h>
-#import <Firebase/Firebase.h>
 
 #import <UserNotifications/UserNotifications.h>
 #import <RNCPushNotificationIOS.h>
@@ -41,6 +40,9 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  
+  [FIRApp configure];
+  
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif
@@ -64,8 +66,6 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  
-  [FIRApp configure];
   
   [RNBootSplash initWithStoryboard:@"LaunchScreen" rootView:rootView];
   return YES;
